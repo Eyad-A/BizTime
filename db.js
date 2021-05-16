@@ -2,7 +2,7 @@
 
 const { Client } = require("pg");
 
-let client = new Client({
+const client = new Client({
     connectionString: "postgresql:///biztime"
 });
 
