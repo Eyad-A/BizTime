@@ -18,7 +18,7 @@ CREATE TABLE companies_industries (
     company_code text NOT NULL REFERENCES companies,
     industry_code text NOT NULL REFERENCES industries,
     PRIMARY KEY(company_code, industry_code)
-    
+    CONSTRAINT invoices_amt_check CHECK ((amt > (0)::double precision))
 );
 
 CREATE TABLE invoices (
