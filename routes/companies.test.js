@@ -16,23 +16,24 @@ describe("GET /", function () {
         const response = await request(app).get("/companies");
         expect(response.body).toEqual({
             "companies": [
-                { code: "bzd", name: "Blizzard" },
-                { code: "sbd", name: "Springboard" },
+                { code: "apple", name: "Apple Computer" },
+                { code: "ibm", name: "IBM" },
+                { code: "google", name: "Google" },
             ]
         });
     })
 })
 
-describe("GET /bzd", function () {
-    test("It should respond with company details of Blizzard", async function () {
-        const response = await request(app).get("/companies/bzd");
+describe("GET /apple", function () {
+    test("It should respond with company details of Apple", async function () {
+        const response = await request(app).get("/companies/apple");
         expect(response.body).toEqual(
             {
                 "company": {
-                    code: "bzd",
-                    name: "Blizzard",
-                    description: "Gaming company",
-                    invoices: [1, 2],
+                    code: "apple",
+                    name: "Apple Computer",
+                    description: "Maker of OSX.",
+                    invoices: [1, 2, 3],
                 }
             }
         );
@@ -63,14 +64,14 @@ describe("POST /", function () {
 describe("PUT /", function() {
     test("It should update the description of a company", async function() {
         const response = await request(app)
-            .put("/companies/bzd")
-            .send({description: "Makers of WoW"});
+            .put("/companies/apple")
+            .send({description: "Makers of the iPhone"});
         expect(response.body).toEqual(
             {
                 "company": {
-                    code: "bzd",
-                    name: "Blizzard",
-                    description: "Makers of WoW",
+                    code: "apple",
+                    name: "Apple Computer",
+                    description: "Makers of the iPhone",
                 }
             }
         );
@@ -79,7 +80,7 @@ describe("PUT /", function() {
 
 describe("DELETE /", function() {
     test("It should delete a company", async function() {
-        const response = await request(app).delete("/companies/bzd");
+        const response = await request(app).delete("/companies/ggl");
         expect(response.body).toEqual({"status": "deleted"});
     });
 });

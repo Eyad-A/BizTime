@@ -18,6 +18,7 @@ CREATE TABLE companies_industries (
     company_code text NOT NULL REFERENCES companies,
     industry_code text NOT NULL REFERENCES industries,
     PRIMARY KEY(company_code, industry_code)
+    
 );
 
 CREATE TABLE invoices (
@@ -26,8 +27,7 @@ CREATE TABLE invoices (
     amt float NOT NULL,
     paid boolean DEFAULT false NOT NULL,
     add_date date DEFAULT CURRENT_DATE NOT NULL,
-    paid_date date,
-    CONSTRAINT invoices_amt_check CHECK ((amt > (0)::double precision))
+    paid_date date    
 );
 
 INSERT INTO companies

@@ -25,7 +25,7 @@ router.get('/:code', async (req, res, next) => {
             `SELECT c.code, c.name, i.industry
             FROM companies AS c
             LEFT JOIN companies_industries AS ci
-            ON c.code = ci.comp_code
+            ON c.code = ci.company_code
             LEFT JOIN industries AS i
             ON ci.industry_code = i.code
             WHERE c.code = $1`,
